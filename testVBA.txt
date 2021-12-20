@@ -1,0 +1,41 @@
+
+Sub findtest()
+
+    Dim wb As Workbook
+    Dim i As Integer
+    Dim cellposi
+    Set wb = Workbooks("monitorringList.xlsx")
+    wb.Worksheets(1).Range("A1").Activate
+    For i = 1 To 100
+        If Cells(i, "A").Value <> "" Then
+           cellposi = Cells(i, "A").Address
+           Exit For
+        End If
+    Next
+    Debug.Print cellposi
+    
+'    Dim findword
+'    wb.Worksheets(1).Range("A1").Activate
+'    Set findword = wb.Worksheets(1).Cells(cellposi).Find(What:="監視ID").Column
+'    Debug.Print findword
+    
+    
+'   Windows("monitorringList.xlsx").Activate
+'    Range("A1").Select
+'    Cells.Find(What:="監視ID", After:=ActiveCell, LookIn:=xlFormulas2, LookAt _
+'        :=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:= _
+'        False, MatchByte:=False, SearchFormat:=False).Activate
+'    Windows("testVBA.xlsm").Activate
+'    Range("A1").Select
+
+
+    Dim findword
+    wb.Worksheets(1).Range("A1").Activate
+    Set findword = Cells.Find(What:="監視ID", After:=ActiveCell, LookIn:=xlFormulas2, LookAt _
+        :=xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:= _
+        False, MatchByte:=False, SearchFormat:=False)
+        
+    Debug.Print findword.Address
+    
+End Sub
+
